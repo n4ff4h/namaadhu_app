@@ -15,7 +15,7 @@ class HomeScreen extends ConsumerWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          csvData = await IslandsRepository().getAll();
+          csvData = await IslandsRepository().getAllIslands();
           if (kDebugMode) {
             print(csvData!.length);
           }
