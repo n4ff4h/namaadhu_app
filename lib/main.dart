@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:namaadhu_vaguthu/data/islands_repository.dart';
-import 'package:namaadhu_vaguthu/screens/home_screen.dart';
 import 'package:namaadhu_vaguthu/screens/island_selection_screen.dart';
 
 void main() {

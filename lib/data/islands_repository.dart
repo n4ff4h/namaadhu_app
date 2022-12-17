@@ -37,6 +37,7 @@ class IslandsRepository implements IIslandsRepository {
           (value) => Atoll(
             value[0], // id
             value[1], // atollName
+            value[2], // atollAbbreviation
           ),
         )
         .toList();
