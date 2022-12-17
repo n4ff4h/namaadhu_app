@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:namaadhu_vaguthu/data/islands_repository.dart';
+import 'package:namaadhu_vaguthu/global_providers.dart';
 import 'package:namaadhu_vaguthu/models/atoll.dart';
 import 'package:namaadhu_vaguthu/models/island.dart';
 
@@ -17,8 +17,8 @@ class IslandSelectionScreen extends ConsumerWidget {
       ),
       body: FutureBuilder(
         future: Future.wait([
-          IslandsRepository().getAllIslands(),
-          IslandsRepository().getAllAtolls()
+          ref.read(islandsProvider),
+          ref.read(atollsProvider),
         ]),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
@@ -31,11 +31,6 @@ class IslandSelectionScreen extends ConsumerWidget {
               shrinkWrap: true,
               itemCount: atolls.length,
               itemBuilder: (context, index) {
-                // Add a divider after every list tile
-                // if (index.isOdd) return const Divider();
-
-                // Atoll atoll = atolls
-                //     .firstWhere((element) => element.id == island.atollNumber);
                 Atoll atoll = atolls[index];
                 List<Island> islandsFromAtoll = islands
                     .where((element) => element.atollNumber == atoll.id)
