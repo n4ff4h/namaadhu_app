@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:namaadhu_vaguthu/global_providers.dart';
 import 'package:namaadhu_vaguthu/models/atoll.dart';
 import 'package:namaadhu_vaguthu/models/island.dart';
+import 'package:namaadhu_vaguthu/providers/selected_island_provider.dart';
 
 class IslandSelectionScreen extends ConsumerWidget {
   const IslandSelectionScreen({super.key});
@@ -47,7 +48,13 @@ class IslandSelectionScreen extends ConsumerWidget {
                       itemCount: islandsFromAtoll.length,
                       itemBuilder: (context, index) {
                         return ListTile(
-                          onTap: () {},
+                          onTap: () {
+                            ref
+                                .watch(selectedIslandProvider.notifier)
+                                .setSelectedIslandId(
+                                    islandsFromAtoll[index].id);
+                            print(islandsFromAtoll[index].id);
+                          },
                           title: Padding(
                             padding: const EdgeInsets.only(left: 16.0),
                             child: Text(

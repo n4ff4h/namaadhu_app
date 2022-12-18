@@ -3,11 +3,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:namaadhu_vaguthu/data/islands_repository.dart';
 import 'package:namaadhu_vaguthu/global_providers.dart';
 import 'package:namaadhu_vaguthu/screens/island_selection_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final sharedPreferences = await SharedPreferences.getInstance();
+
   runApp(
     ProviderScope(
       overrides: [
+        sharedPreferencesProvider.overrideWithValue(sharedPreferences),
         islandsProvider
             .overrideWith((ref) => IslandsRepository().getAllIslands()),
         atollsProvider
