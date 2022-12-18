@@ -25,7 +25,7 @@ void main() async {
         sharedPreferencesProvider.overrideWithValue(sharedPreferences),
         islandsProvider.overrideWithValue(islandList),
         atollsProvider.overrideWithValue(atollList),
-        prayerTimesProvider.overrideWithValue(prayerTimesList),
+        prayerTimesProvider.overrideWith((ref) => prayerTimesList),
       ],
       child: const NamaadhuVaguthuApp(),
     ),

@@ -14,4 +14,4 @@ final islandsProvider =
 final atollsProvider =
     Provider<List<Atoll>>((ref) => throw UnimplementedError());
 final prayerTimesProvider =
-    Provider<List<PrayerTimes>>((ref) => throw UnimplementedError());
+    StateProvider<List<PrayerTimes>>((ref) => throw UnimplementedError());
