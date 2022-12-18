@@ -9,6 +9,6 @@ final sharedPreferencesProvider = Provider<SharedPreferences>(
 );
 
 final islandsProvider =
-    Provider<Future<List<Island>>>((ref) => throw UnimplementedError());
+    Provider<List<Island>>((ref) => throw UnimplementedError());
 final atollsProvider =
-    Provider<Future<List<Atoll>>>((ref) => throw UnimplementedError());
+    Provider<List<Atoll>>((ref) => throw UnimplementedError());

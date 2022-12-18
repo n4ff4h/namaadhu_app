@@ -10,15 +10,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final sharedPreferences = await SharedPreferences.getInstance();
+  final islandList = await IslandsRepository().getAllIslands();
+  final atollList = await IslandsRepository().getAllAtolls();
 
   runApp(
     ProviderScope(
       overrides: [
         sharedPreferencesProvider.overrideWithValue(sharedPreferences),
-        islandsProvider
-            .overrideWith((ref) => IslandsRepository().getAllIslands()),
-        atollsProvider
-            .overrideWith((ref) => IslandsRepository().getAllAtolls()),
+        islandsProvider.overrideWithValue(islandList),
+        atollsProvider.overrideWithValue(atollList),
       ],
       child: const NamaadhuVaguthuApp(),
     ),
