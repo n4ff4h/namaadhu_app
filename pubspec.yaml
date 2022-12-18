@@ -16,6 +16,7 @@ dependencies:
   flutter_riverpod: ^2.0.2
   csv: ^5.0.1
   shared_preferences: ^2.0.15
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:
