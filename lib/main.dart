@@ -37,14 +37,15 @@ class NamaadhuVaguthuApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final selectedIsland = ref.watch(selectedIslandProvider);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // -1 check == value being null in state notifier class
-      initialRoute:
-          ref.read(selectedIslandProvider) != -1 ? '/' : 'island_selection',
+      initialRoute: selectedIsland != -1 ? 'home' : 'island-selection',
       routes: {
-        '/': (context) => const HomeScreen(),
-        '/island_selection': (context) => const IslandSelectionScreen(),
+        'home': (context) => const HomeScreen(),
+        'island-selection': (context) => const IslandSelectionScreen(),
       },
     );
   }
