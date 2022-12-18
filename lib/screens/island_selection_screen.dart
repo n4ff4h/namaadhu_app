@@ -18,8 +18,8 @@ class IslandSelectionScreen extends ConsumerWidget {
       ),
       body: FutureBuilder(
         future: Future.wait([
-          ref.read(islandsProvider),
-          ref.read(atollsProvider),
+          ref.watch(islandsProvider),
+          ref.watch(atollsProvider),
         ]),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
@@ -53,7 +53,7 @@ class IslandSelectionScreen extends ConsumerWidget {
                                 .watch(selectedIslandProvider.notifier)
                                 .setSelectedIslandId(
                                     islandsFromAtoll[index].id);
-                            print(islandsFromAtoll[index].id);
+                            Navigator.pop(context);
                           },
                           title: Padding(
                             padding: const EdgeInsets.only(left: 16.0),
