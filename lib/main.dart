@@ -42,10 +42,10 @@ class NamaadhuVaguthuApp extends ConsumerWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // -1 check == value being null in state notifier class
-      initialRoute: selectedIsland != -1 ? 'home' : 'island-selection',
+      initialRoute: selectedIsland != -1 ? 'home' : 'island_selection',
       routes: {
         'home': (context) => const HomeScreen(),
-        'island-selection': (context) => const IslandSelectionScreen(),
+        'island_selection': (context) => const IslandSelectionScreen(),
       },
     );
   }

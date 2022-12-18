@@ -23,6 +23,7 @@ class SelectedIslandNotifier extends StateNotifier<int> {
 
   void setSelectedIslandId(int id) async {
     pref.setInt('selectedIslandId', id);
+    state = id;
     final prayerTimesList = await DataService().getAllPrayerTimes(id);
     ref.read(prayerTimesProvider.notifier).state = prayerTimesList;
   }

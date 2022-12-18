@@ -40,10 +40,13 @@ class IslandSelectionScreen extends ConsumerWidget {
                 itemBuilder: (context, index) {
                   return ListTile(
                     onTap: () {
+                      final selectedIsland = ref.watch(selectedIslandProvider);
                       ref
                           .watch(selectedIslandProvider.notifier)
                           .setSelectedIslandId(islandsFromAtoll[index].id);
-                      Navigator.pop(context);
+                      selectedIsland == -1
+                          ? Navigator.popAndPushNamed(context, 'home')
+                          : Navigator.pop(context);
                     },
                     title: Padding(
                       padding: const EdgeInsets.only(left: 16.0),
