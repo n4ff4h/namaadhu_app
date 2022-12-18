@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:namaadhu_vaguthu/global_providers.dart';
+import 'package:namaadhu_vaguthu/providers/global_providers.dart';
 import 'package:namaadhu_vaguthu/models/atoll.dart';
 import 'package:namaadhu_vaguthu/models/island.dart';
 import 'package:namaadhu_vaguthu/providers/selected_island_provider.dart';
