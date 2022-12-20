@@ -4,7 +4,14 @@ import 'package:namaadhu_vaguthu/models/island.dart';
 import 'package:namaadhu_vaguthu/models/prayer_times.dart';
 import '../models/atoll.dart';
 
-class DataService {
+abstract class IDataService {
+  Future<List<Island>> getAllIslands();
+  Future<List<Atoll>> getAllAtolls();
+  Future<List<PrayerTimes>> getAllPrayerTimes(int id);
+}
+
+class DataService implements IDataService {
+  @override
   Future<List<Island>> getAllIslands() async {
     var content = await rootBundle.loadString("assets/csv/islands.csv");
     List<List<dynamic>> listOfListIslands =
@@ -21,6 +28,7 @@ class DataService {
         .toList();
   }
 
+  @override
   Future<List<Atoll>> getAllAtolls() async {
     var content = await rootBundle.loadString("assets/csv/atolls.csv");
     List<List<dynamic>> listOfListAtolls =
@@ -36,6 +44,7 @@ class DataService {
         .toList();
   }
 
+  @override
   Future<List<PrayerTimes>> getAllPrayerTimes(int id) async {
     var content = await rootBundle.loadString("assets/csv/islands/$id.csv");
     List<List<dynamic>> listOfListPrayerTimes =
