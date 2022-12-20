@@ -1,6 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:namaadhu_vaguthu/providers/global_providers.dart';
-import 'package:namaadhu_vaguthu/services/data_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final selectedIslandProvider =
@@ -24,7 +23,5 @@ class SelectedIslandNotifier extends StateNotifier<int> {
   void setSelectedIslandId(int id) async {
     pref.setInt('selectedIslandId', id);
     state = id;
-    final prayerTimesList = await DataService().getAllPrayerTimes(id);
-    ref.read(prayerTimesProvider.notifier).state = prayerTimesList;
   }
 }

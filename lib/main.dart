@@ -14,18 +14,12 @@ void main() async {
   final islandList = await DataService().getAllIslands();
   final atollList = await DataService().getAllAtolls();
 
-  final islandId = sharedPreferences.getInt('selectedIslandId');
-  final List<PrayerTimes> prayerTimesList;
-  prayerTimesList =
-      islandId != null ? await DataService().getAllPrayerTimes(islandId) : [];
-
   runApp(
     ProviderScope(
       overrides: [
         sharedPreferencesProvider.overrideWithValue(sharedPreferences),
         islandsProvider.overrideWithValue(islandList),
         atollsProvider.overrideWithValue(atollList),
-        prayerTimesProvider.overrideWith((ref) => prayerTimesList),
       ],
       child: const NamaadhuVaguthuApp(),
     ),

@@ -1,5 +1,6 @@
 import 'package:csv/csv.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:namaadhu_vaguthu/models/island.dart';
 import 'package:namaadhu_vaguthu/models/prayer_times.dart';
 import '../models/atoll.dart';
@@ -9,6 +10,8 @@ abstract class IDataService {
   Future<List<Atoll>> getAllAtolls();
   Future<List<PrayerTimes>> getAllPrayerTimes(int id);
 }
+
+final dataServiceProvider = Provider<IDataService>((ref) => DataService());
 
 class DataService implements IDataService {
   @override
