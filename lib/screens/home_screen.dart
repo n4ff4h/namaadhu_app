@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -5,11 +7,31 @@ import 'package:namaadhu_vaguthu/models/prayer_times.dart';
 import 'package:namaadhu_vaguthu/providers/global_providers.dart';
 import 'package:namaadhu_vaguthu/providers/selected_island_provider.dart';
 
-class HomeScreen extends ConsumerWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends ConsumerState<HomeScreen> {
+  late Timer timer;
+
+  @override
+  void initState() {
+    super.initState();
+    timer =
+        Timer.periodic(const Duration(seconds: 1), (timer) => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final selectedIslandId = ref.watch(selectedIslandProvider);
     final prayerTimes = ref.watch(prayerTimesProvider(selectedIslandId));
 
