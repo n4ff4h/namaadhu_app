@@ -5,6 +5,7 @@ import 'package:namaadhu_vaguthu/models/prayer_times.dart';
 import 'package:namaadhu_vaguthu/providers/current_time_provider.dart';
 import 'package:namaadhu_vaguthu/providers/global_providers.dart';
 import 'package:namaadhu_vaguthu/providers/selected_island_provider.dart';
+import 'package:namaadhu_vaguthu/shared/constants.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -47,7 +48,7 @@ class HomeScreen extends ConsumerWidget {
           });
 
           Color setColorForTime(int key) {
-            return key == nextPrayerTime ? Colors.blue : Colors.black;
+            return key == nextPrayerTime ? kPrimaryColor : Colors.white;
           }
 
           return Container(

@@ -5,6 +5,7 @@ import 'package:namaadhu_vaguthu/providers/global_providers.dart';
 import 'package:namaadhu_vaguthu/providers/selected_island_provider.dart';
 import 'package:namaadhu_vaguthu/screens/home_screen.dart';
 import 'package:namaadhu_vaguthu/screens/island_selection_screen.dart';
+import 'package:namaadhu_vaguthu/shared/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
@@ -31,9 +32,20 @@ class NamaadhuVaguthuApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedIsland = ref.watch(selectedIslandProvider);
+    final ThemeData theme = ThemeData.dark();
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: theme.copyWith(
+        scaffoldBackgroundColor: kBackgroundColor,
+        colorScheme: theme.colorScheme.copyWith(
+          primary: kPrimaryColor,
+        ),
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
+          color: kBackgroundColor,
+        ),
+      ),
       // -1 check == value being null in state notifier class
       initialRoute: selectedIsland != -1 ? 'home' : 'island_selection',
       routes: {
