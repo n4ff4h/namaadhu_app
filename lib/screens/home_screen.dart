@@ -1,45 +1,18 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:namaadhu_vaguthu/models/prayer_times.dart';
+import 'package:namaadhu_vaguthu/providers/current_time_provider.dart';
 import 'package:namaadhu_vaguthu/providers/global_providers.dart';
 import 'package:namaadhu_vaguthu/providers/selected_island_provider.dart';
 
-class HomeScreen extends ConsumerStatefulWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends ConsumerState<HomeScreen> {
-  late Timer timer;
-
-  @override
-  void initState() {
-    super.initState();
-    timer =
-        Timer.periodic(const Duration(seconds: 1), (timer) => setState(() {}));
-  }
-
-  @override
-  void dispose() {
-    timer.cancel();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final selectedIslandId = ref.watch(selectedIslandProvider);
     final prayerTimes = ref.watch(prayerTimesProvider(selectedIslandId));
-
-    String durationToString(int minutes) {
-      var d = Duration(minutes: minutes);
-      List<String> parts = d.toString().split(':');
-      return '${parts[0].padLeft(2, '0')}:${parts[1].padLeft(2, '0')}';
-    }
 
     return Scaffold(
       appBar: AppBar(
@@ -54,7 +27,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       ),
       body: prayerTimes.when(
         data: (data) {
-          int dayOfYear = int.parse(DateFormat("D").format(DateTime.now()));
+          final currentTime = ref.watch(currentTimeProvider);
+
+          int dayOfYear = int.parse(DateFormat("D").format(currentTime));
           PrayerTimes prayerTimesToday = data.firstWhere(
             (element) => element.id == dayOfYear,
           );
@@ -64,8 +39,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           final listAsMap = prayerTimesToday.toJson();
 
           listAsMap.forEach((key, value) {
-            final now = DateTime.now();
-            final timeInMinutes = now.hour * 60 + now.minute;
+            final timeInMinutes = currentTime.hour * 60 + currentTime.minute;
             if (timeInMinutes >= value) {
               nextPrayerTime = (key == 6) ? key = 1 : key + 1;
               return;
@@ -119,5 +93,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         loading: () => const Center(child: CircularProgressIndicator()),
       ),
     );
+  }
+
+  String durationToString(int minutes) {
+    var d = Duration(minutes: minutes);
+    List<String> parts = d.toString().split(':');
+    return '${parts[0].padLeft(2, '0')}:${parts[1].padLeft(2, '0')}';
   }
 }
