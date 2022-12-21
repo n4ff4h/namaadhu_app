@@ -37,32 +37,55 @@ class HomeScreen extends ConsumerWidget {
             (element) => element.id == dayOfYear,
           );
 
+          int? nextPrayerTime;
+
+          final listAsMap = prayerTimesToday.toJson();
+
+          listAsMap.forEach((key, value) {
+            final now = DateTime.now();
+            final timeInMinutes = now.hour * 60 + now.minute;
+            if (timeInMinutes >= value) {
+              nextPrayerTime = (key == 6) ? key = 1 : key + 1;
+              return;
+            }
+          });
+
+          Color setColorForTime(int key) {
+            return key == nextPrayerTime ? Colors.blue : Colors.black;
+          }
+
           return Container(
             padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 ListTile(
+                  textColor: setColorForTime(1),
                   title: const Text('Fajr'),
                   trailing: Text(durationToString(prayerTimesToday.fajr)),
                 ),
                 ListTile(
+                  textColor: setColorForTime(2),
                   title: const Text('Sunrise'),
                   trailing: Text(durationToString(prayerTimesToday.sunrise)),
                 ),
                 ListTile(
+                  textColor: setColorForTime(3),
                   title: const Text('Dhuhr'),
                   trailing: Text(durationToString(prayerTimesToday.dhuhr)),
                 ),
                 ListTile(
+                  textColor: setColorForTime(4),
                   title: const Text('Asr'),
                   trailing: Text(durationToString(prayerTimesToday.asr)),
                 ),
                 ListTile(
+                  textColor: setColorForTime(5),
                   title: const Text('Maghrib'),
                   trailing: Text(durationToString(prayerTimesToday.maghrib)),
                 ),
                 ListTile(
+                  textColor: setColorForTime(6),
                   title: const Text('Isha'),
                   trailing: Text(durationToString(prayerTimesToday.isha)),
                 ),

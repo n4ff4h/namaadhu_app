@@ -16,4 +16,14 @@ class PrayerTimes {
     this.maghrib,
     this.isha,
   );
+
+  Map<int, dynamic> toJson() => {
+        0: id,
+        1: fajr,
+        2: sunrise,
+        3: dhuhr,
+        4: asr,
+        5: maghrib,
+        6: isha,
+      };
 }
