@@ -39,17 +39,6 @@ class HomeScreen extends ConsumerWidget {
 
           final objAsMap = prayerTimesToday.toMap();
 
-          // objAsMap.forEach((key, value) {
-          //   final timeInMinutes = currentTime.hour * 60 + currentTime.minute;
-          //   if (timeInMinutes >= value) {
-          //     int index = objAsMap.keys.toList().indexOf(key);
-          //     nextPrayerTime = (index == 5)
-          //         ? objAsMap.keys.elementAt(index = 1)
-          //         : objAsMap.keys.elementAt(index++);
-          //     return;
-          //   }
-          // });
-
           final timeInMinutes = currentTime.hour * 60 + currentTime.minute;
           final keys = objAsMap.keys.toList();
 
@@ -57,6 +46,8 @@ class HomeScreen extends ConsumerWidget {
             if (timeInMinutes < objAsMap[keys[i]]!) {
               nextPrayerTime = keys[i];
               break;
+            } else {
+              nextPrayerTime = keys[0];
             }
           }
 
