@@ -12,8 +12,8 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedIslandId = ref.watch(selectedIslandProvider);
-    final prayerTimes = ref.watch(prayerTimesProvider(selectedIslandId));
+    final selectedIsland = ref.watch(selectedIslandProvider);
+    final prayerTimes = ref.watch(prayerTimesProvider(selectedIsland.id));
 
     return Scaffold(
       appBar: AppBar(
@@ -77,9 +77,9 @@ class HomeScreen extends ConsumerWidget {
                         ),
                       ),
                       const SizedBox(height: 10.0),
-                      const Text(
-                        'K. Malé',
-                        style: TextStyle(fontSize: 25.0),
+                      Text(
+                        '${selectedIsland.atollAbbreviation}. ${selectedIsland.islandName}',
+                        style: const TextStyle(fontSize: 25.0),
                       ),
                     ],
                   ),

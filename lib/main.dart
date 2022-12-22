@@ -51,7 +51,7 @@ class NamaadhuVaguthuApp extends ConsumerWidget {
         ),
       ),
       // -1 check == value being null in state notifier class
-      initialRoute: selectedIsland != -1 ? 'home' : 'island_selection',
+      initialRoute: selectedIsland.id != -1 ? 'home' : 'island_selection',
       routes: {
         'home': (context) => const HomeScreen(),
         'island_selection': (context) => const IslandSelectionScreen(),
