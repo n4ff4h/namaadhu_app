@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:namaadhu_vaguthu/services/data_service.dart';
 import 'package:namaadhu_vaguthu/providers/global_providers.dart';
 import 'package:namaadhu_vaguthu/providers/selected_island_provider.dart';
@@ -38,6 +39,9 @@ class NamaadhuVaguthuApp extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       theme: theme.copyWith(
         scaffoldBackgroundColor: kBackgroundColor,
+        textTheme: GoogleFonts.poppinsTextTheme(
+          theme.textTheme,
+        ),
         colorScheme: theme.colorScheme.copyWith(
           primary: kPrimaryColor,
         ),

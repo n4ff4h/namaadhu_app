@@ -35,19 +35,32 @@ class HomeScreen extends ConsumerWidget {
             (element) => element.id == dayOfYear,
           );
 
-          int? nextPrayerTime;
+          String? nextPrayerTime;
 
-          final listAsMap = prayerTimesToday.toJson();
+          final objAsMap = prayerTimesToday.toMap();
 
-          listAsMap.forEach((key, value) {
-            final timeInMinutes = currentTime.hour * 60 + currentTime.minute;
-            if (timeInMinutes >= value) {
-              nextPrayerTime = (key == 6) ? key = 1 : key + 1;
-              return;
+          // objAsMap.forEach((key, value) {
+          //   final timeInMinutes = currentTime.hour * 60 + currentTime.minute;
+          //   if (timeInMinutes >= value) {
+          //     int index = objAsMap.keys.toList().indexOf(key);
+          //     nextPrayerTime = (index == 5)
+          //         ? objAsMap.keys.elementAt(index = 1)
+          //         : objAsMap.keys.elementAt(index++);
+          //     return;
+          //   }
+          // });
+
+          final timeInMinutes = currentTime.hour * 60 + currentTime.minute;
+          final keys = objAsMap.keys.toList();
+
+          for (int i = 0; i < keys.length; i++) {
+            if (timeInMinutes < objAsMap[keys[i]]!) {
+              nextPrayerTime = keys[i];
+              break;
             }
-          });
+          }
 
-          Color setColorForTime(int key) {
+          Color setColorForTime(String key) {
             return key == nextPrayerTime ? kPrimaryColor : Colors.white;
           }
 
@@ -55,38 +68,21 @@ class HomeScreen extends ConsumerWidget {
             padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                ListTile(
-                  textColor: setColorForTime(1),
-                  title: const Text('Fajr'),
-                  trailing: Text(durationToString(prayerTimesToday.fajr)),
-                ),
-                ListTile(
-                  textColor: setColorForTime(2),
-                  title: const Text('Sunrise'),
-                  trailing: Text(durationToString(prayerTimesToday.sunrise)),
-                ),
-                ListTile(
-                  textColor: setColorForTime(3),
-                  title: const Text('Dhuhr'),
-                  trailing: Text(durationToString(prayerTimesToday.dhuhr)),
-                ),
-                ListTile(
-                  textColor: setColorForTime(4),
-                  title: const Text('Asr'),
-                  trailing: Text(durationToString(prayerTimesToday.asr)),
-                ),
-                ListTile(
-                  textColor: setColorForTime(5),
-                  title: const Text('Maghrib'),
-                  trailing: Text(durationToString(prayerTimesToday.maghrib)),
-                ),
-                ListTile(
-                  textColor: setColorForTime(6),
-                  title: const Text('Isha'),
-                  trailing: Text(durationToString(prayerTimesToday.isha)),
-                ),
-              ],
+              children: objAsMap.entries
+                  .map(
+                    (element) => ListTile(
+                      textColor: setColorForTime(element.key),
+                      title: Text(
+                        element.key.capitalizeFirstLetter(),
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                      trailing: Text(
+                        durationToString(element.value),
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                    ),
+                  )
+                  .toList(),
             ),
           );
         },

@@ -17,13 +17,12 @@ class PrayerTimes {
     this.isha,
   );
 
-  Map<int, dynamic> toJson() => {
-        0: id,
-        1: fajr,
-        2: sunrise,
-        3: dhuhr,
-        4: asr,
-        5: maghrib,
-        6: isha,
+  Map<String, int> toMap() => {
+        'fajr': fajr,
+        'sunrise': sunrise,
+        'dhuhr': dhuhr,
+        'asr': asr,
+        'maghrib': maghrib,
+        'isha': isha,
       };
 }
