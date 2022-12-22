@@ -56,24 +56,53 @@ class HomeScreen extends ConsumerWidget {
           }
 
           return Container(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: objAsMap.entries
-                  .map(
-                    (element) => ListTile(
-                      textColor: setColorForTime(element.key),
-                      title: Text(
-                        element.key.capitalizeFirstLetter(),
-                        style: const TextStyle(fontSize: 18),
+              children: [
+                Container(
+                  margin: const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 32.0),
+                  height: 185.0,
+                  decoration: BoxDecoration(
+                    color: kCardColor,
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        DateFormat('EEEE MMM dd, yyyy').format(currentTime),
+                        style: const TextStyle(
+                          fontSize: 25.0,
+                        ),
                       ),
-                      trailing: Text(
-                        durationToString(element.value),
-                        style: const TextStyle(fontSize: 18),
+                      const SizedBox(height: 10.0),
+                      const Text(
+                        'K. Malé',
+                        style: TextStyle(fontSize: 25.0),
                       ),
-                    ),
-                  )
-                  .toList(),
+                    ],
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: objAsMap.entries
+                      .map(
+                        (element) => ListTile(
+                          textColor: setColorForTime(element.key),
+                          title: Text(
+                            element.key.capitalizeFirstLetter(),
+                            style: const TextStyle(fontSize: 18),
+                          ),
+                          trailing: Text(
+                            durationToString(element.value),
+                            style: const TextStyle(fontSize: 18),
+                          ),
+                        ),
+                      )
+                      .toList(),
+                ),
+              ],
             ),
           );
         },
