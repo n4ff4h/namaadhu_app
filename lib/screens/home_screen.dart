@@ -76,7 +76,7 @@ class HomeScreen extends ConsumerWidget {
                           fontSize: 25.0,
                         ),
                       ),
-                      const SizedBox(height: 10.0),
+                      const SizedBox(height: 12.0),
                       Text(
                         '${selectedIsland.atollAbbreviation}. ${selectedIsland.islandName}',
                         style: const TextStyle(fontSize: 25.0),
