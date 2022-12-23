@@ -20,15 +20,20 @@ class DataService implements IDataService {
     List<List<dynamic>> listOfListIslands =
         const CsvToListConverter().convert(content, eol: "\n");
 
-    return listOfListIslands
-        .map(
-          (value) => Island(
-            value[1], // id
-            value[2], // atollNumber
-            value[3], // islandName
-          ),
-        )
-        .toList();
+    List<Atoll> atollList = await getAllAtolls();
+
+    return listOfListIslands.map(
+      (value) {
+        final atoll = atollList.firstWhere((element) => element.id == value[2]);
+
+        return Island(
+          value[1], // id
+          value[2], // atollNumber
+          atoll.atollAbbreviation,
+          value[3], // islandName
+        );
+      },
+    ).toList();
   }
 
   @override

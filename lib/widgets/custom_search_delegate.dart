@@ -49,7 +49,12 @@ class CustomSearchDelegate extends SearchDelegate {
     List<Island> matchQuery = [];
 
     for (var island in islandList) {
-      if (island.islandName.toLowerCase().contains(query.toLowerCase())) {
+      final queryLC = query.toLowerCase();
+      final atollAbbreviationLC = '${island.atollAbbreviation.toLowerCase()}.';
+      final islandNameLC = island.islandName.toLowerCase();
+
+      if (islandNameLC.contains(queryLC) ||
+          atollAbbreviationLC.contains(queryLC)) {
         matchQuery.add(island);
       }
     }
@@ -58,11 +63,9 @@ class CustomSearchDelegate extends SearchDelegate {
       itemCount: matchQuery.length,
       itemBuilder: (context, index) {
         var island = matchQuery[index];
-        var atoll =
-            atollList.firstWhere((element) => element.id == island.atollNumber);
 
         return ListTile(
-          title: Text('${atoll.atollAbbreviation}.  ${island.islandName}'),
+          title: Text('${island.atollAbbreviation}.  ${island.islandName}'),
         );
       },
     );
