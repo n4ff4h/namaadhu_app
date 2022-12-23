@@ -69,7 +69,7 @@ class IslandSelectionScreen extends ConsumerWidget {
                     title: Padding(
                       padding: const EdgeInsets.only(left: 24.0),
                       child: Text(
-                        '${atoll.atollAbbreviation}.  ${islandsFromAtoll[index].islandName}',
+                        '${atoll.atollAbbreviation}. ${islandsFromAtoll[index].islandName}',
                       ),
                     ),
                   );
