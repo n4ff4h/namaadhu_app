@@ -78,8 +78,7 @@ class CustomSearchDelegate extends SearchDelegate {
                     .setSelectedAtollAbbreviation(island.atollAbbreviation);
                 selectedIslandNotifier.setSelectedIslandName(island.islandName);
 
-                Navigator.pushNamedAndRemoveUntil(
-                    context, 'home', (route) => false);
+                Navigator.popUntil(context, ModalRoute.withName('home'));
               },
               title: Text('${island.atollAbbreviation}. ${island.islandName}'),
             );

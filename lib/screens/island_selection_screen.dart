@@ -5,7 +5,7 @@ import 'package:namaadhu_vaguthu/providers/global_providers.dart';
 import 'package:namaadhu_vaguthu/models/atoll.dart';
 import 'package:namaadhu_vaguthu/models/island.dart';
 import 'package:namaadhu_vaguthu/providers/selected_island_provider.dart';
-import 'package:namaadhu_vaguthu/widgets/custom_search_delegate.dart';
+import 'package:namaadhu_vaguthu/screens/custom_search_delegate.dart';
 
 class IslandSelectionScreen extends ConsumerWidget {
   const IslandSelectionScreen({super.key});
