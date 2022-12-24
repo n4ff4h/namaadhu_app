@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:namaadhu_vaguthu/models/prayer_times.dart';
 import 'package:namaadhu_vaguthu/providers/current_time_provider.dart';
 import 'package:namaadhu_vaguthu/providers/global_providers.dart';
@@ -22,7 +23,7 @@ class HomeScreen extends ConsumerWidget {
             onPressed: () {
               Navigator.pushNamed(context, 'island_selection');
             },
-            icon: const Icon(Icons.location_on),
+            icon: const Icon(Ionicons.location),
           ),
         ],
       ),

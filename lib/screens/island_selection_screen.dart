@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:namaadhu_vaguthu/providers/global_providers.dart';
 import 'package:namaadhu_vaguthu/models/atoll.dart';
 import 'package:namaadhu_vaguthu/models/island.dart';
@@ -19,15 +20,20 @@ class IslandSelectionScreen extends ConsumerWidget {
         title: const Text(
           'Select Island',
         ),
+        leading: IconButton(
+          icon: const Icon(Ionicons.chevron_back),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         actions: [
           IconButton(
-              onPressed: () {
-                showSearch(
-                  context: context,
-                  delegate: CustomSearchDelegate(islandList, atollList),
-                );
-              },
-              icon: const Icon(Icons.search)),
+            onPressed: () {
+              showSearch(
+                context: context,
+                delegate: CustomSearchDelegate(islandList, atollList),
+              );
+            },
+            icon: const Icon(Ionicons.search),
+          ),
         ],
       ),
       body: ListView.builder(
