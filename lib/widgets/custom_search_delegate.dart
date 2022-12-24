@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:namaadhu_vaguthu/models/atoll.dart';
 import 'package:namaadhu_vaguthu/models/island.dart';
+import 'package:namaadhu_vaguthu/providers/selected_island_provider.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   final List<Island> islandList;
@@ -58,13 +60,29 @@ class CustomSearchDelegate extends SearchDelegate {
       }
     }
 
-    return ListView.builder(
-      itemCount: matchQuery.length,
-      itemBuilder: (context, index) {
-        var island = matchQuery[index];
+    return Consumer(
+      builder: (BuildContext context, WidgetRef ref, Widget? child) {
+        return ListView.builder(
+          itemCount: matchQuery.length,
+          itemBuilder: (context, index) {
+            var island = matchQuery[index];
 
-        return ListTile(
-          title: Text('${island.atollAbbreviation}. ${island.islandName}'),
+            return ListTile(
+              onTap: () {
+                final selectedIslandNotifier =
+                    ref.watch(selectedIslandProvider.notifier);
+
+                selectedIslandNotifier.setSelectedIslandId(island.id);
+                selectedIslandNotifier
+                    .setSelectedAtollAbbreviation(island.atollAbbreviation);
+                selectedIslandNotifier.setSelectedIslandName(island.islandName);
+
+                Navigator.pushNamedAndRemoveUntil(
+                    context, 'home', (route) => false);
+              },
+              title: Text('${island.atollAbbreviation}. ${island.islandName}'),
+            );
+          },
         );
       },
     );
