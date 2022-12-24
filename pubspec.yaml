@@ -17,7 +17,6 @@ dependencies:
   csv: ^5.0.1
   shared_preferences: ^2.0.15
   intl: ^0.18.0
-  google_fonts: ^3.0.1
   freezed_annotation: ^2.2.0
   json_annotation: ^4.7.0
   ionicons: ^0.2.1
@@ -38,10 +37,7 @@ flutter:
     - assets/csv/
     - assets/csv/islands/
 
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #         weight: 700
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: fonts/Poppins-Regular.ttf
