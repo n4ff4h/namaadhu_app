@@ -36,7 +36,7 @@ class NamaadhuVaguthuApp extends ConsumerWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme,
-      // -1 check == value being null in state notifier class
+      // -1 == value being null in state notifier class
       initialRoute: selectedIsland.id != -1 ? 'home' : 'island_selection',
       routes: {
         'home': (context) => const HomeScreen(),

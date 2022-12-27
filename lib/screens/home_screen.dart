@@ -7,6 +7,8 @@ import 'package:namaadhu_vaguthu/providers/current_time_provider.dart';
 import 'package:namaadhu_vaguthu/providers/global_providers.dart';
 import 'package:namaadhu_vaguthu/providers/selected_island_provider.dart';
 import 'package:namaadhu_vaguthu/shared/constants.dart';
+import 'package:namaadhu_vaguthu/shared/string_utils.dart';
+import 'package:namaadhu_vaguthu/shared/time_utils.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -15,6 +17,8 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedIsland = ref.watch(selectedIslandProvider);
     final prayerTimes = ref.watch(prayerTimesProvider(selectedIsland.id));
+
+    final timeUtils = TimeUtils();
 
     return Scaffold(
       appBar: AppBar(
@@ -31,7 +35,7 @@ class HomeScreen extends ConsumerWidget {
         data: (data) {
           final currentTime = ref.watch(currentTimeProvider);
 
-          int dayOfYear = int.parse(DateFormat("D").format(currentTime));
+          int dayOfYear = timeUtils.getDayOfYear(currentTime);
           PrayerTimes prayerTimesToday = data.firstWhere(
             (element) => element.id == dayOfYear,
           );
@@ -96,7 +100,7 @@ class HomeScreen extends ConsumerWidget {
                             style: const TextStyle(fontSize: 18),
                           ),
                           trailing: Text(
-                            durationToString(element.value),
+                            timeUtils.durationToString(element.value),
                             style: const TextStyle(fontSize: 18),
                           ),
                         ),
@@ -111,11 +115,5 @@ class HomeScreen extends ConsumerWidget {
         loading: () => const Center(child: CircularProgressIndicator()),
       ),
     );
-  }
-
-  String durationToString(int minutes) {
-    var d = Duration(minutes: minutes);
-    List<String> parts = d.toString().split(':');
-    return '${parts[0].padLeft(2, '0')}:${parts[1].padLeft(2, '0')}';
   }
 }
