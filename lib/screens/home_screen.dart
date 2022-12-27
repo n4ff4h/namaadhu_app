@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:namaadhu_vaguthu/models/prayer_times.dart';
 import 'package:namaadhu_vaguthu/providers/current_time_provider.dart';
 import 'package:namaadhu_vaguthu/providers/global_providers.dart';
 import 'package:namaadhu_vaguthu/providers/selected_island_provider.dart';
 import 'package:namaadhu_vaguthu/shared/constants.dart';
-import 'package:namaadhu_vaguthu/shared/string_utils.dart';
-import 'package:namaadhu_vaguthu/shared/time_utils.dart';
+import 'package:namaadhu_vaguthu/shared/utils/prayertimes_utils.dart';
+import 'package:namaadhu_vaguthu/shared/utils/string_utils.dart';
+import 'package:namaadhu_vaguthu/shared/utils/time_utils.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -19,6 +19,7 @@ class HomeScreen extends ConsumerWidget {
     final prayerTimes = ref.watch(prayerTimesProvider(selectedIsland.id));
 
     final timeUtils = TimeUtils();
+    final prayerTimeUtils = PrayerTimesUtils();
 
     return Scaffold(
       appBar: AppBar(
@@ -35,28 +36,18 @@ class HomeScreen extends ConsumerWidget {
         data: (data) {
           final currentTime = ref.watch(currentTimeProvider);
 
+          // Get the prayer times for today as a Map
           int dayOfYear = timeUtils.getDayOfYear(currentTime);
-          PrayerTimes prayerTimesToday = data.firstWhere(
-            (element) => element.id == dayOfYear,
-          );
+          Map<String, dynamic> prayerTimesToday =
+              prayerTimeUtils.getPrayerTimesToday(data, dayOfYear);
 
-          String? nextPrayerTime;
+          // Use the current time in minutes to get the next prayer time in the Map
+          final currentTimeInMinutes =
+              currentTime.hour * 60 + currentTime.minute;
+          String? nextPrayerTime = prayerTimeUtils.getNextPrayerTime(
+              prayerTimesToday, currentTimeInMinutes);
 
-          final objAsMap = prayerTimesToday.toMap();
-
-          final timeInMinutes = currentTime.hour * 60 + currentTime.minute;
-          final keys = objAsMap.keys.toList();
-
-          for (int i = 0; i < keys.length; i++) {
-            if (timeInMinutes < objAsMap[keys[i]]!) {
-              nextPrayerTime = keys[i];
-              break;
-            } else {
-              nextPrayerTime = keys[0];
-            }
-          }
-
-          Color setColorForTime(String key) {
+          Color highlightNextPrayerTime(String key) {
             return key == nextPrayerTime ? kPrimaryColor : Colors.white;
           }
 
@@ -91,10 +82,10 @@ class HomeScreen extends ConsumerWidget {
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: objAsMap.entries
+                  children: prayerTimesToday.entries
                       .map(
                         (element) => ListTile(
-                          textColor: setColorForTime(element.key),
+                          textColor: highlightNextPrayerTime(element.key),
                           title: Text(
                             element.key.capitalizeFirstLetter(),
                             style: const TextStyle(fontSize: 18),
