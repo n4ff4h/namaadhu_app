@@ -61,12 +61,11 @@ class IslandSelectionScreen extends ConsumerWidget {
                       final selectedIslandNotifier =
                           ref.watch(selectedIslandProvider.notifier);
 
-                      selectedIslandNotifier
-                          .setSelectedIslandId(islandsFromAtoll[index].id);
-                      selectedIslandNotifier.setSelectedAtollAbbreviation(
-                          atoll.atollAbbreviation);
-                      selectedIslandNotifier.setSelectedIslandName(
-                          islandsFromAtoll[index].islandName);
+                      selectedIslandNotifier.setSelectedIsland(
+                        id: islandsFromAtoll[index].id,
+                        atollAbbreviation: atoll.atollAbbreviation,
+                        islandName: islandsFromAtoll[index].islandName,
+                      );
 
                       selectedIsland.id == -1
                           ? Navigator.popAndPushNamed(context, 'home')

@@ -22,18 +22,18 @@ class SelectedIslandNotifier extends StateNotifier<SelectedIslandState> {
           islandName: pref.getString('selectedIslandName') ?? 'none',
         ));
 
-  void setSelectedIslandId(int id) async {
+  void setSelectedIsland({
+    required int id,
+    required String atollAbbreviation,
+    required String islandName,
+  }) async {
     pref.setInt('selectedIslandId', id);
-    state = state.copyWith(id: id);
-  }
-
-  void setSelectedAtollAbbreviation(String atollAbbreviation) async {
     pref.setString('selectedAtollAbbreviation', atollAbbreviation);
-    state = state.copyWith(atollAbbreviation: atollAbbreviation);
-  }
-
-  void setSelectedIslandName(String islandName) async {
     pref.setString('selectedIslandName', islandName);
-    state = state.copyWith(islandName: islandName);
+    state = state.copyWith(
+      id: id,
+      atollAbbreviation: atollAbbreviation,
+      islandName: islandName,
+    );
   }
 }

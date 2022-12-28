@@ -73,12 +73,14 @@ class CustomSearchDelegate extends SearchDelegate {
                 final selectedIslandNotifier =
                     ref.watch(selectedIslandProvider.notifier);
 
-                selectedIslandNotifier.setSelectedIslandId(island.id);
-                selectedIslandNotifier
-                    .setSelectedAtollAbbreviation(island.atollAbbreviation);
-                selectedIslandNotifier.setSelectedIslandName(island.islandName);
+                selectedIslandNotifier.setSelectedIsland(
+                  id: island.id,
+                  atollAbbreviation: island.atollAbbreviation,
+                  islandName: island.islandName,
+                );
 
-                Navigator.popUntil(context, ModalRoute.withName('home'));
+                Navigator.pushNamedAndRemoveUntil(
+                    context, 'home', (route) => false);
               },
               title: Text('${island.atollAbbreviation}. ${island.islandName}'),
             );
