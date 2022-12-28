@@ -53,8 +53,7 @@ class HomeScreen extends ConsumerWidget {
 
           return Container(
             padding: const EdgeInsets.all(10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+            child: ListView(
               children: [
                 Container(
                   margin: const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 32.0),
