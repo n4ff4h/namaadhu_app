@@ -4,6 +4,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:namaadhu_vaguthu/models/atoll.dart';
 import 'package:namaadhu_vaguthu/models/island.dart';
 import 'package:namaadhu_vaguthu/providers/selected_island_provider.dart';
+import 'package:namaadhu_vaguthu/shared/constants.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   final List<Island> islandList;
@@ -13,7 +14,20 @@ class CustomSearchDelegate extends SearchDelegate {
 
   @override
   ThemeData appBarTheme(BuildContext context) {
-    return Theme.of(context);
+    return Theme.of(context).copyWith(
+      textTheme: const TextTheme(
+        headline6: kSearchFieldTextStyle,
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: kCardColor,
+        hintStyle: kSearchFieldTextStyle,
+        contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+        border: kSearchFieldBorder,
+        disabledBorder: kSearchFieldBorder,
+        focusedBorder: kSearchFieldBorder,
+      ),
+    );
   }
 
   @override

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:namaadhu_vaguthu/shared/constants.dart';
 
-final ThemeData theme = ThemeData.dark().copyWith(
+final ThemeData theme = ThemeData.dark();
+
+final appTheme = theme.copyWith(
   textTheme: theme.textTheme.apply(
     fontFamily: 'Poppins',
   ),

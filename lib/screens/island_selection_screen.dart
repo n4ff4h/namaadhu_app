@@ -6,6 +6,7 @@ import 'package:namaadhu_vaguthu/models/atoll.dart';
 import 'package:namaadhu_vaguthu/models/island.dart';
 import 'package:namaadhu_vaguthu/providers/selected_island_provider.dart';
 import 'package:namaadhu_vaguthu/screens/custom_search_delegate.dart';
+import 'package:namaadhu_vaguthu/shared/widgets/custom_expansion_tile.dart';
 
 class IslandSelectionScreen extends ConsumerWidget {
   const IslandSelectionScreen({super.key});
@@ -20,6 +21,7 @@ class IslandSelectionScreen extends ConsumerWidget {
         title: const Text(
           'Select Island',
         ),
+        centerTitle: true,
         leading: IconButton(
           icon: const Icon(Ionicons.chevron_back),
           onPressed: () => Navigator.of(context).pop(),
@@ -46,7 +48,7 @@ class IslandSelectionScreen extends ConsumerWidget {
               .where((element) => element.atollNumber == atoll.id)
               .toList();
 
-          return ExpansionTile(
+          return CustomExpansionTile(
             title: Text('${atoll.atollName} (${atoll.atollAbbreviation})'),
             children: [
               ListView.builder(
