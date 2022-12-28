@@ -21,6 +21,7 @@ class IslandSelectionScreen extends ConsumerWidget {
         title: const Text(
           'Select Island',
         ),
+        centerTitle: true,
         leading: IconButton(
           icon: const Icon(Ionicons.chevron_back),
           onPressed: () => Navigator.of(context).pop(),
