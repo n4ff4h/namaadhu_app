@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -43,11 +45,30 @@ void main() async {
   );
 }
 
-class NamaadhuVaguthuApp extends ConsumerWidget {
+class NamaadhuVaguthuApp extends ConsumerStatefulWidget {
   const NamaadhuVaguthuApp({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _NamaadhuVaguthuAppState();
+}
+
+class _NamaadhuVaguthuAppState extends ConsumerState<NamaadhuVaguthuApp> {
+  @override
+  void initState() {
+    AwesomeNotifications().actionStream.listen((notification) {
+      if (notification.channelKey == 'reminder_channel' && Platform.isIOS) {
+        AwesomeNotifications().getGlobalBadgeCounter().then(
+              (value) =>
+                  AwesomeNotifications().setGlobalBadgeCounter(value - 1),
+            );
+      }
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final selectedIsland = ref.watch(selectedIslandProvider);
 
     SystemChrome.setSystemUIOverlayStyle(

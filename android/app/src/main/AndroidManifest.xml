@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="me.naffah.namaadhu_vaguthu">
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
    <application
         android:label="Namaadhu Vaguthu"
         android:name="${applicationName}"
