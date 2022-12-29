@@ -1,3 +1,4 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
@@ -6,13 +7,73 @@ import 'package:namaadhu_vaguthu/models/atoll.dart';
 import 'package:namaadhu_vaguthu/models/island.dart';
 import 'package:namaadhu_vaguthu/providers/selected_island_provider.dart';
 import 'package:namaadhu_vaguthu/screens/custom_search_delegate.dart';
+import 'package:namaadhu_vaguthu/shared/constants.dart';
 import 'package:namaadhu_vaguthu/widgets/custom_expansion_tile.dart';
 
-class IslandSelectionScreen extends ConsumerWidget {
+class IslandSelectionScreen extends ConsumerStatefulWidget {
   const IslandSelectionScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _IslandSelectionScreenState();
+}
+
+class _IslandSelectionScreenState extends ConsumerState<IslandSelectionScreen> {
+  @override
+  void initState() {
+    super.initState();
+    AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
+      if (!isAllowed) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            backgroundColor: kCardColor,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(10.0),
+              ),
+            ),
+            title: const Text('Allow notifications'),
+            content:
+                const Text('Our app would like to show prayer time reminders'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text(
+                  'Don/t Allow',
+                  style: TextStyle(
+                    color: kMutedColor,
+                    fontSize: 18.0,
+                  ),
+                ),
+              ),
+              TextButton(
+                onPressed: () {
+                  AwesomeNotifications()
+                      .requestPermissionToSendNotifications()
+                      .then((_) => Navigator.pop(context));
+                },
+                child: const Text(
+                  'Allow',
+                  style: TextStyle(
+                    color: kPrimaryColor,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final selectedIsland = ref.watch(selectedIslandProvider);
     final islandList = ref.watch(islandsProvider);
     final atollList = ref.watch(atollsProvider);
 
@@ -22,10 +83,12 @@ class IslandSelectionScreen extends ConsumerWidget {
           'Select Island',
         ),
         centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(Ionicons.chevron_back),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
+        leading: selectedIsland.id != -1
+            ? IconButton(
+                icon: const Icon(Ionicons.chevron_back),
+                onPressed: () => Navigator.of(context).pop(),
+              )
+            : null,
         actions: [
           IconButton(
             onPressed: () {
@@ -59,7 +122,6 @@ class IslandSelectionScreen extends ConsumerWidget {
                 itemBuilder: (context, index) {
                   return ListTile(
                     onTap: () {
-                      final selectedIsland = ref.watch(selectedIslandProvider);
                       final selectedIslandNotifier =
                           ref.watch(selectedIslandProvider.notifier);
 
