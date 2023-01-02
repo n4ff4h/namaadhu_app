@@ -1,5 +1,5 @@
-import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:namaadhu_vaguthu/providers/global_providers.dart';
@@ -7,8 +7,10 @@ import 'package:namaadhu_vaguthu/models/atoll.dart';
 import 'package:namaadhu_vaguthu/models/island.dart';
 import 'package:namaadhu_vaguthu/providers/selected_island_provider.dart';
 import 'package:namaadhu_vaguthu/screens/custom_search_delegate.dart';
+import 'package:namaadhu_vaguthu/services/notification_service.dart';
 import 'package:namaadhu_vaguthu/shared/constants.dart';
 import 'package:namaadhu_vaguthu/widgets/custom_expansion_tile.dart';
+import 'package:workmanager/workmanager.dart';
 
 class IslandSelectionScreen extends ConsumerStatefulWidget {
   const IslandSelectionScreen({super.key});
@@ -22,8 +24,15 @@ class _IslandSelectionScreenState extends ConsumerState<IslandSelectionScreen> {
   @override
   void initState() {
     super.initState();
-    AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
-      if (!isAllowed) {
+    FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+        FlutterLocalNotificationsPlugin();
+
+    flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
+        ?.areNotificationsEnabled()
+        .then((isAllowed) {
+      if (!isAllowed!) {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
@@ -51,8 +60,10 @@ class _IslandSelectionScreenState extends ConsumerState<IslandSelectionScreen> {
               ),
               TextButton(
                 onPressed: () {
-                  AwesomeNotifications()
-                      .requestPermissionToSendNotifications()
+                  flutterLocalNotificationsPlugin
+                      .resolvePlatformSpecificImplementation<
+                          AndroidFlutterLocalNotificationsPlugin>()
+                      ?.requestPermission()
                       .then((_) => Navigator.pop(context));
                 },
                 child: const Text(
@@ -129,6 +140,16 @@ class _IslandSelectionScreenState extends ConsumerState<IslandSelectionScreen> {
                         id: islandsFromAtoll[index].id,
                         atollAbbreviation: atoll.atollAbbreviation,
                         islandName: islandsFromAtoll[index].islandName,
+                      );
+
+                      NotificationService().cancelScheduledNotifications();
+
+                      // Re-register background task
+                      Workmanager().cancelByUniqueName(prayerTimeShedulerTask);
+                      Workmanager().registerPeriodicTask(
+                        prayerTimeShedulerTask,
+                        prayerTimeShedulerTask,
+                        frequency: const Duration(minutes: 15),
                       );
 
                       selectedIsland.id == -1

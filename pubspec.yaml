@@ -20,7 +20,9 @@ dependencies:
   freezed_annotation: ^2.2.0
   json_annotation: ^4.7.0
   ionicons: ^0.2.1
-  awesome_notifications: ^0.6.19
+  workmanager: ^0.5.1
+  flutter_local_notifications: ^13.0.0
+  timezone: ^0.9.1
 
 dev_dependencies:
   flutter_test:
