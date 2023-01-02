@@ -14,4 +14,4 @@ Prayer times app for the Maldives🌴.
 
 ## TODO
 
-- Shedule notifications for prayer times
+- Add a custom icon for notifications
