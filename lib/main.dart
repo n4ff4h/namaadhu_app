@@ -17,6 +17,55 @@ import 'package:namaadhu_vaguthu/shared/utils/time_utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:workmanager/workmanager.dart';
 
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final sharedPreferences = await SharedPreferences.getInstance();
+  final islandList = await DataService().getAllIslands();
+  final atollList = await DataService().getAllAtolls();
+
+  await NotificationService().initializePlatformNotifications();
+
+  Workmanager().initialize(callbackDispatcher);
+
+  runApp(
+    ProviderScope(
+      overrides: [
+        sharedPreferencesProvider.overrideWithValue(sharedPreferences),
+        islandsProvider.overrideWithValue(islandList),
+        atollsProvider.overrideWithValue(atollList),
+      ],
+      child: const NamaadhuVaguthuApp(),
+    ),
+  );
+}
+
+class NamaadhuVaguthuApp extends ConsumerWidget {
+  const NamaadhuVaguthuApp({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final selectedIsland = ref.watch(selectedIslandProvider);
+
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: kBackgroundColor,
+        systemNavigationBarColor: kBackgroundColor,
+      ),
+    );
+
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: appTheme,
+      // -1 == value being null in state notifier class
+      initialRoute: selectedIsland.id != -1 ? 'home' : 'island_selection',
+      routes: {
+        'home': (context) => const HomeScreen(),
+        'island_selection': (context) => const IslandSelectionScreen(),
+      },
+    );
+  }
+}
+
 @pragma('vm:entry-point')
 void callbackDispatcher() {
   Workmanager().executeTask((task, inputData) async {
@@ -73,53 +122,4 @@ void callbackDispatcher() {
     }
     return Future.value(true);
   });
-}
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  final sharedPreferences = await SharedPreferences.getInstance();
-  final islandList = await DataService().getAllIslands();
-  final atollList = await DataService().getAllAtolls();
-
-  await NotificationService().initializePlatformNotifications();
-
-  Workmanager().initialize(callbackDispatcher);
-
-  runApp(
-    ProviderScope(
-      overrides: [
-        sharedPreferencesProvider.overrideWithValue(sharedPreferences),
-        islandsProvider.overrideWithValue(islandList),
-        atollsProvider.overrideWithValue(atollList),
-      ],
-      child: const NamaadhuVaguthuApp(),
-    ),
-  );
-}
-
-class NamaadhuVaguthuApp extends ConsumerWidget {
-  const NamaadhuVaguthuApp({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final selectedIsland = ref.watch(selectedIslandProvider);
-
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: kBackgroundColor,
-        systemNavigationBarColor: kBackgroundColor,
-      ),
-    );
-
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: appTheme,
-      // -1 == value being null in state notifier class
-      initialRoute: selectedIsland.id != -1 ? 'home' : 'island_selection',
-      routes: {
-        'home': (context) => const HomeScreen(),
-        'island_selection': (context) => const IslandSelectionScreen(),
-      },
-    );
-  }
 }
