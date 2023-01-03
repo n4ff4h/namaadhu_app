@@ -15,3 +15,6 @@ Prayer times app for the Maldives🌴.
 ## TODO
 
 - Add a custom icon for notifications
+- Update UI colors xD
+- Allow disabling notifications for specific prayer times
+- Fix minutes rounding off when used with Duration object(Gives a minute inaccuracy)
