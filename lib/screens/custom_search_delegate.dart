@@ -96,7 +96,10 @@ class CustomSearchDelegate extends SearchDelegate {
                 Navigator.pushNamedAndRemoveUntil(
                     context, 'home', (route) => false);
               },
-              title: Text('${island.atollAbbreviation}. ${island.islandName}'),
+              title: Text(
+                '${island.atollAbbreviation}. ${island.islandName}',
+                style: const TextStyle(fontFamily: 'Poppins'),
+              ),
             );
           },
         );
