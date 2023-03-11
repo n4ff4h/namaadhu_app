@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:namaadhu_vaguthu/src/features/home/models/atoll.dart';
-import 'package:namaadhu_vaguthu/src/features/home/models/island.dart';
-import 'package:namaadhu_vaguthu/src/features/home/models/prayer_times.dart';
-import 'package:namaadhu_vaguthu/src/features/home/services/data_service.dart';
+import 'package:namaadhu_app/src/features/home/models/atoll.dart';
+import 'package:namaadhu_app/src/features/home/models/island.dart';
+import 'package:namaadhu_app/src/features/home/models/prayer_times.dart';
+import 'package:namaadhu_app/src/features/home/services/data_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final sharedPreferencesProvider = Provider<SharedPreferences>(

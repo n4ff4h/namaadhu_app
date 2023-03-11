@@ -2,14 +2,14 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:namaadhu_vaguthu/src/features/home/services/data_service.dart';
-import 'package:namaadhu_vaguthu/src/features/home/providers/global_providers.dart';
-import 'package:namaadhu_vaguthu/src/features/home/services/notification_service.dart';
-import 'package:namaadhu_vaguthu/src/constants/constants.dart';
-import 'package:namaadhu_vaguthu/src/utils/prayertimes_utils.dart';
-import 'package:namaadhu_vaguthu/src/utils/string_utils.dart';
-import 'package:namaadhu_vaguthu/src/utils/time_utils.dart';
-import 'package:namaadhu_vaguthu/src/app.dart';
+import 'package:namaadhu_app/src/features/home/services/data_service.dart';
+import 'package:namaadhu_app/src/features/home/providers/global_providers.dart';
+import 'package:namaadhu_app/src/features/home/services/notification_service.dart';
+import 'package:namaadhu_app/src/constants/constants.dart';
+import 'package:namaadhu_app/src/utils/prayertimes_utils.dart';
+import 'package:namaadhu_app/src/utils/string_utils.dart';
+import 'package:namaadhu_app/src/utils/time_utils.dart';
+import 'package:namaadhu_app/src/app.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:workmanager/workmanager.dart';
 

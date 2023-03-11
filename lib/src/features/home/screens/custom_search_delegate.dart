@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:namaadhu_vaguthu/src/features/home/models/atoll.dart';
-import 'package:namaadhu_vaguthu/src/features/home/models/island.dart';
-import 'package:namaadhu_vaguthu/src/features/home/providers/selected_island_provider.dart';
-import 'package:namaadhu_vaguthu/src/constants/constants.dart';
+import 'package:namaadhu_app/src/features/home/models/atoll.dart';
+import 'package:namaadhu_app/src/features/home/models/island.dart';
+import 'package:namaadhu_app/src/features/home/providers/selected_island_provider.dart';
+import 'package:namaadhu_app/src/constants/constants.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   final List<Island> islandList;

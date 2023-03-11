@@ -1,4 +1,4 @@
-import 'package:namaadhu_vaguthu/src/features/home/models/prayer_times.dart';
+import 'package:namaadhu_app/src/features/home/models/prayer_times.dart';
 
 class PrayerTimesUtils {
   Map<String, dynamic> getPrayerTimesToday(

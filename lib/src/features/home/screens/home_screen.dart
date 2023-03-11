@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:namaadhu_vaguthu/src/features/home/providers/current_time_provider.dart';
-import 'package:namaadhu_vaguthu/src/features/home/providers/global_providers.dart';
-import 'package:namaadhu_vaguthu/src/features/home/providers/selected_island_provider.dart';
-import 'package:namaadhu_vaguthu/src/constants/constants.dart';
-import 'package:namaadhu_vaguthu/src/utils/prayertimes_utils.dart';
-import 'package:namaadhu_vaguthu/src/utils/string_utils.dart';
-import 'package:namaadhu_vaguthu/src/utils/time_utils.dart';
+import 'package:namaadhu_app/src/features/home/providers/current_time_provider.dart';
+import 'package:namaadhu_app/src/features/home/providers/global_providers.dart';
+import 'package:namaadhu_app/src/features/home/providers/selected_island_provider.dart';
+import 'package:namaadhu_app/src/constants/constants.dart';
+import 'package:namaadhu_app/src/utils/prayertimes_utils.dart';
+import 'package:namaadhu_app/src/utils/string_utils.dart';
+import 'package:namaadhu_app/src/utils/time_utils.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
