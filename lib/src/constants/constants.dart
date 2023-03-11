@@ -10,5 +10,4 @@ final kSearchFieldBorder = OutlineInputBorder(
   borderSide: BorderSide.none,
 );
 
-const prayerTimeShedulerTask =
-    'me.naffah.namaadhu_vaguthu.prayerTimeSchedulerTask';
+const prayerTimeShedulerTask = 'me.naffah.namaadhu_app.prayerTimeSchedulerTask';
