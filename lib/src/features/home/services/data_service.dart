@@ -1,8 +1,8 @@
 import 'package:csv/csv.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:namaadhu_vaguthu/models/island.dart';
-import 'package:namaadhu_vaguthu/models/prayer_times.dart';
+import 'package:namaadhu_vaguthu/src/features/home/models/island.dart';
+import 'package:namaadhu_vaguthu/src/features/home/models/prayer_times.dart';
 import '../models/atoll.dart';
 
 abstract class IDataService {
