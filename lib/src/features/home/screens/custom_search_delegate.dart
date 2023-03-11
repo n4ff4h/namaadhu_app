@@ -16,7 +16,7 @@ class CustomSearchDelegate extends SearchDelegate {
   ThemeData appBarTheme(BuildContext context) {
     return Theme.of(context).copyWith(
       textTheme: const TextTheme(
-        headline6: kSearchFieldTextStyle,
+        titleLarge: kSearchFieldTextStyle,
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
