@@ -5,7 +5,16 @@ import 'package:namaadhu_app/src/constants/app_colors.dart';
 import 'package:namaadhu_app/src/features/home/models/atoll.dart';
 import 'package:namaadhu_app/src/features/home/models/island.dart';
 import 'package:namaadhu_app/src/features/home/providers/selected_island_provider.dart';
-import 'package:namaadhu_app/src/constants/constants.dart';
+
+const kSearchFieldTextStyle = TextStyle(
+  fontFamily: 'Poppins',
+  fontSize: 18.0,
+);
+
+final kSearchFieldBorder = OutlineInputBorder(
+  borderRadius: BorderRadius.circular(50.0),
+  borderSide: BorderSide.none,
+);
 
 class CustomSearchDelegate extends SearchDelegate {
   final List<Island> islandList;
