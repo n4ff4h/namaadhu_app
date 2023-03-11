@@ -7,8 +7,8 @@ import 'package:namaadhu_app/src/features/home/screens/island_selection_screen.d
 import 'package:namaadhu_app/src/constants/app_colors.dart';
 import 'package:namaadhu_app/src/constants/theme.dart';
 
-class NamaadhuVaguthuApp extends ConsumerWidget {
-  const NamaadhuVaguthuApp({super.key});
+class NamaadhuApp extends ConsumerWidget {
+  const NamaadhuApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

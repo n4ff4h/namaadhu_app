@@ -26,7 +26,7 @@ void main() async {
         islandsProvider.overrideWithValue(islandList),
         atollsProvider.overrideWithValue(atollList),
       ],
-      child: const NamaadhuVaguthuApp(),
+      child: const NamaadhuApp(),
     ),
   );
 }
