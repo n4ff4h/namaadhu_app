@@ -4,8 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:namaadhu_vaguthu/providers/selected_island_provider.dart';
 import 'package:namaadhu_vaguthu/screens/home_screen.dart';
 import 'package:namaadhu_vaguthu/screens/island_selection_screen.dart';
-import 'package:namaadhu_vaguthu/shared/constants.dart';
-import 'package:namaadhu_vaguthu/shared/theme.dart';
+import 'package:namaadhu_vaguthu/src/constants/constants.dart';
+import 'package:namaadhu_vaguthu/src/constants/theme.dart';
 
 class NamaadhuVaguthuApp extends ConsumerWidget {
   const NamaadhuVaguthuApp({super.key});

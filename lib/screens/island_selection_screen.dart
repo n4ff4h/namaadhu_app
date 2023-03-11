@@ -8,7 +8,7 @@ import 'package:namaadhu_vaguthu/models/island.dart';
 import 'package:namaadhu_vaguthu/providers/selected_island_provider.dart';
 import 'package:namaadhu_vaguthu/screens/custom_search_delegate.dart';
 import 'package:namaadhu_vaguthu/services/notification_service.dart';
-import 'package:namaadhu_vaguthu/shared/constants.dart';
+import 'package:namaadhu_vaguthu/src/constants/constants.dart';
 import 'package:namaadhu_vaguthu/src/common_widgets/custom_expansion_tile.dart';
 import 'package:workmanager/workmanager.dart';
 

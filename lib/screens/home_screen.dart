@@ -5,7 +5,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:namaadhu_vaguthu/providers/current_time_provider.dart';
 import 'package:namaadhu_vaguthu/providers/global_providers.dart';
 import 'package:namaadhu_vaguthu/providers/selected_island_provider.dart';
-import 'package:namaadhu_vaguthu/shared/constants.dart';
+import 'package:namaadhu_vaguthu/src/constants/constants.dart';
 import 'package:namaadhu_vaguthu/src/utils/prayertimes_utils.dart';
 import 'package:namaadhu_vaguthu/src/utils/string_utils.dart';
 import 'package:namaadhu_vaguthu/src/utils/time_utils.dart';
