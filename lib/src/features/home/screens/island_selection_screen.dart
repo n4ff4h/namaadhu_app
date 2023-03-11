@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:namaadhu_app/src/constants/app_colors.dart';
 import 'package:namaadhu_app/src/features/home/providers/global_providers.dart';
 import 'package:namaadhu_app/src/features/home/models/atoll.dart';
 import 'package:namaadhu_app/src/features/home/models/island.dart';

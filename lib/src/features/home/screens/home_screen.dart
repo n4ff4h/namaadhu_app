@@ -5,7 +5,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:namaadhu_app/src/features/home/providers/current_time_provider.dart';
 import 'package:namaadhu_app/src/features/home/providers/global_providers.dart';
 import 'package:namaadhu_app/src/features/home/providers/selected_island_provider.dart';
-import 'package:namaadhu_app/src/constants/constants.dart';
+import 'package:namaadhu_app/src/constants/app_colors.dart';
 import 'package:namaadhu_app/src/utils/prayertimes_utils.dart';
 import 'package:namaadhu_app/src/utils/string_utils.dart';
 import 'package:namaadhu_app/src/utils/time_utils.dart';
