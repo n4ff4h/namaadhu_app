@@ -1,9 +1,9 @@
 import 'package:csv/csv.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:namaadhu_app/src/features/home/models/island.dart';
+import 'package:namaadhu_app/src/features/select_island/models/island.dart';
 import 'package:namaadhu_app/src/features/home/models/prayer_times.dart';
-import '../models/atoll.dart';
+import '../features/select_island/models/atoll.dart';
 
 abstract class IDataService {
   Future<List<Island>> getAllIslands();

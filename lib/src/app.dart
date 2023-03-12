@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:namaadhu_app/src/features/home/providers/selected_island_provider.dart';
+import 'package:namaadhu_app/src/features/select_island/providers/selected_island_provider.dart';
 import 'package:namaadhu_app/src/features/home/screens/home_screen.dart';
-import 'package:namaadhu_app/src/features/home/screens/island_selection_screen.dart';
+import 'package:namaadhu_app/src/features/select_island/screens/island_selection_screen.dart';
 import 'package:namaadhu_app/src/constants/app_colors.dart';
 import 'package:namaadhu_app/src/constants/theme.dart';
 

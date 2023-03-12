@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:namaadhu_app/src/features/home/services/data_service.dart';
-import 'package:namaadhu_app/src/features/home/services/notification_service.dart';
+import 'package:namaadhu_app/src/services/data_service.dart';
+import 'package:namaadhu_app/src/services/notification_service.dart';
 import 'package:namaadhu_app/src/utils/prayertimes_utils.dart';
 import 'package:namaadhu_app/src/utils/string_utils.dart';
 import 'package:namaadhu_app/src/utils/time_utils.dart';
