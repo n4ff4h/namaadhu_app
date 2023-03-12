@@ -12,15 +12,15 @@ import 'package:namaadhu_app/src/services/notification_service.dart';
 import 'package:namaadhu_app/src/common_widgets/custom_expansion_tile.dart';
 import 'package:workmanager/workmanager.dart';
 
-class IslandSelectionScreen extends ConsumerStatefulWidget {
-  const IslandSelectionScreen({super.key});
+class SelectIslandScreen extends ConsumerStatefulWidget {
+  const SelectIslandScreen({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _IslandSelectionScreenState();
+      _SelectIslandScreenState();
 }
 
-class _IslandSelectionScreenState extends ConsumerState<IslandSelectionScreen> {
+class _SelectIslandScreenState extends ConsumerState<SelectIslandScreen> {
   @override
   void initState() {
     super.initState();

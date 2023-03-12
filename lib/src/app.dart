@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:namaadhu_app/src/features/select_island/providers/selected_island_provider.dart';
 import 'package:namaadhu_app/src/features/home/screens/home_screen.dart';
-import 'package:namaadhu_app/src/features/select_island/screens/island_selection_screen.dart';
+import 'package:namaadhu_app/src/features/select_island/screens/select_island_screen.dart';
 import 'package:namaadhu_app/src/constants/app_colors.dart';
 import 'package:namaadhu_app/src/constants/theme.dart';
 
@@ -25,10 +25,10 @@ class NamaadhuApp extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       theme: appTheme,
       // -1 == value being null in state notifier class
-      initialRoute: selectedIsland.id != -1 ? 'home' : 'island_selection',
+      initialRoute: selectedIsland.id != -1 ? 'home' : 'select_island',
       routes: {
         'home': (context) => const HomeScreen(),
-        'island_selection': (context) => const IslandSelectionScreen(),
+        'select_island': (context) => const SelectIslandScreen(),
       },
     );
   }
