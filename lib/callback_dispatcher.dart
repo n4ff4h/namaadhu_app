@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:namaadhu_app/src/constants/constants.dart';
 import 'package:namaadhu_app/src/features/home/services/data_service.dart';
 import 'package:namaadhu_app/src/features/home/services/notification_service.dart';
 import 'package:namaadhu_app/src/utils/prayertimes_utils.dart';
@@ -8,6 +7,9 @@ import 'package:namaadhu_app/src/utils/string_utils.dart';
 import 'package:namaadhu_app/src/utils/time_utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:workmanager/workmanager.dart';
+
+// Task ID
+const prayerTimeShedulerTask = 'me.naffah.namaadhu_app.prayerTimeSchedulerTask';
 
 @pragma('vm:entry-point')
 void callbackDispatcher() {
