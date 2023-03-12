@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:namaadhu_vaguthu/models/atoll.dart';
-import 'package:namaadhu_vaguthu/models/island.dart';
-import 'package:namaadhu_vaguthu/providers/selected_island_provider.dart';
-import 'package:namaadhu_vaguthu/shared/constants.dart';
+import 'package:namaadhu_app/src/constants/app_colors.dart';
+import 'package:namaadhu_app/src/features/select_island/models/atoll.dart';
+import 'package:namaadhu_app/src/features/select_island/models/island.dart';
+import 'package:namaadhu_app/src/features/select_island/providers/selected_island_provider.dart';
+
+const kSearchFieldTextStyle = TextStyle(
+  fontFamily: 'Poppins',
+  fontSize: 18.0,
+);
+
+final kSearchFieldBorder = OutlineInputBorder(
+  borderRadius: BorderRadius.circular(50.0),
+  borderSide: BorderSide.none,
+);
 
 class CustomSearchDelegate extends SearchDelegate {
   final List<Island> islandList;
@@ -16,7 +26,7 @@ class CustomSearchDelegate extends SearchDelegate {
   ThemeData appBarTheme(BuildContext context) {
     return Theme.of(context).copyWith(
       textTheme: const TextTheme(
-        headline6: kSearchFieldTextStyle,
+        titleLarge: kSearchFieldTextStyle,
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,

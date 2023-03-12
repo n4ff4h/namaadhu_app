@@ -1,4 +1,4 @@
-# namaadhu_vaguthu
+# Namaadhu
 
 Prayer times app for the Maldives🌴.
 

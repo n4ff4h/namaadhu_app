@@ -2,25 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:namaadhu_vaguthu/providers/global_providers.dart';
-import 'package:namaadhu_vaguthu/models/atoll.dart';
-import 'package:namaadhu_vaguthu/models/island.dart';
-import 'package:namaadhu_vaguthu/providers/selected_island_provider.dart';
-import 'package:namaadhu_vaguthu/screens/custom_search_delegate.dart';
-import 'package:namaadhu_vaguthu/services/notification_service.dart';
-import 'package:namaadhu_vaguthu/shared/constants.dart';
-import 'package:namaadhu_vaguthu/widgets/custom_expansion_tile.dart';
+import 'package:namaadhu_app/callback_dispatcher.dart';
+import 'package:namaadhu_app/src/constants/app_colors.dart';
+import 'package:namaadhu_app/src/features/select_island/models/atoll.dart';
+import 'package:namaadhu_app/src/features/select_island/models/island.dart';
+import 'package:namaadhu_app/src/features/select_island/providers/selected_island_provider.dart';
+import 'package:namaadhu_app/src/features/select_island/screens/custom_search_delegate.dart';
+import 'package:namaadhu_app/src/services/notification_service.dart';
+import 'package:namaadhu_app/src/common_widgets/custom_expansion_tile.dart';
 import 'package:workmanager/workmanager.dart';
 
-class IslandSelectionScreen extends ConsumerStatefulWidget {
-  const IslandSelectionScreen({super.key});
+class SelectIslandScreen extends ConsumerStatefulWidget {
+  const SelectIslandScreen({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _IslandSelectionScreenState();
+      _SelectIslandScreenState();
 }
 
-class _IslandSelectionScreenState extends ConsumerState<IslandSelectionScreen> {
+class _SelectIslandScreenState extends ConsumerState<SelectIslandScreen> {
   @override
   void initState() {
     super.initState();

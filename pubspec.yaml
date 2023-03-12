@@ -1,9 +1,9 @@
-name: namaadhu_vaguthu
+name: namaadhu_app
 description: Prayer times app for the Maldives.
 
 publish_to: "none"
 
-version: 1.0.0+1
+version: 0.1.0+1
 
 environment:
   sdk: ">=2.18.5 <3.0.0"
@@ -32,6 +32,7 @@ dev_dependencies:
   build_runner: ^2.3.3
   freezed: ^2.3.2
   json_serializable: ^6.5.4
+  change_app_package_name: ^1.1.0
 
 flutter:
   uses-material-design: true

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:namaadhu_vaguthu/providers/current_time_provider.dart';
-import 'package:namaadhu_vaguthu/providers/global_providers.dart';
-import 'package:namaadhu_vaguthu/providers/selected_island_provider.dart';
-import 'package:namaadhu_vaguthu/shared/constants.dart';
-import 'package:namaadhu_vaguthu/shared/utils/prayertimes_utils.dart';
-import 'package:namaadhu_vaguthu/shared/utils/string_utils.dart';
-import 'package:namaadhu_vaguthu/shared/utils/time_utils.dart';
+import 'package:namaadhu_app/src/features/home/models/prayer_times.dart';
+import 'package:namaadhu_app/src/features/home/providers/current_time_provider.dart';
+import 'package:namaadhu_app/src/features/select_island/providers/selected_island_provider.dart';
+import 'package:namaadhu_app/src/constants/app_colors.dart';
+import 'package:namaadhu_app/src/utils/prayertimes_utils.dart';
+import 'package:namaadhu_app/src/utils/string_utils.dart';
+import 'package:namaadhu_app/src/utils/time_utils.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -26,7 +26,7 @@ class HomeScreen extends ConsumerWidget {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, 'island_selection');
+              Navigator.pushNamed(context, 'select_island');
             },
             icon: const Icon(Ionicons.location),
           ),

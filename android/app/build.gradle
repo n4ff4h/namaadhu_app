@@ -45,7 +45,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "me.naffah.namaadhu_vaguthu"
+        applicationId "me.naffah.namaadhu_app"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion 21

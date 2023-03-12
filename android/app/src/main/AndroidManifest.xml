@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.naffah.namaadhu_vaguthu">
+    package="me.naffah.namaadhu_app">
    <application
-        android:label="Namaadhu Vaguthu"
+        android:label="Namaadhu"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

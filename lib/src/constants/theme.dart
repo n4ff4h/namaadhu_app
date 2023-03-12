@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:namaadhu_vaguthu/shared/constants.dart';
+import 'package:namaadhu_app/src/constants/app_colors.dart';
 
 final ThemeData theme = ThemeData.dark();
 

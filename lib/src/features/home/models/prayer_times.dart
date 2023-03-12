@@ -1,3 +1,11 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:namaadhu_app/src/services/data_service.dart';
+
+final prayerTimesProvider =
+    FutureProvider.autoDispose.family<List<PrayerTimes>, int>(
+  (ref, id) => ref.watch(dataServiceProvider).getAllPrayerTimes(id),
+);
+
 class PrayerTimes {
   final int id;
   final int fajr;
