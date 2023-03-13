@@ -6,6 +6,8 @@ class NotificationSettingsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Container();
+    return const Center(
+      child: Text('Settings Screen'),
+    );
   }
 }

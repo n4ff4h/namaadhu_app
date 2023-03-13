@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:namaadhu_app/callback_dispatcher.dart';
 import 'package:namaadhu_app/src/constants/app_colors.dart';
@@ -8,6 +9,7 @@ import 'package:namaadhu_app/src/features/select_island/models/atoll.dart';
 import 'package:namaadhu_app/src/features/select_island/models/island.dart';
 import 'package:namaadhu_app/src/features/select_island/providers/selected_island_provider.dart';
 import 'package:namaadhu_app/src/features/select_island/screens/custom_search_delegate.dart';
+import 'package:namaadhu_app/src/router/app_router.dart';
 import 'package:namaadhu_app/src/services/notification_service.dart';
 import 'package:namaadhu_app/src/common_widgets/custom_expansion_tile.dart';
 import 'package:workmanager/workmanager.dart';
@@ -97,7 +99,7 @@ class _SelectIslandScreenState extends ConsumerState<SelectIslandScreen> {
         leading: selectedIsland.id != -1
             ? IconButton(
                 icon: const Icon(Ionicons.chevron_back),
-                onPressed: () => Navigator.of(context).pop(),
+                onPressed: () => context.goNamed(AppRoute.home.name),
               )
             : null,
         actions: [
@@ -152,9 +154,7 @@ class _SelectIslandScreenState extends ConsumerState<SelectIslandScreen> {
                         frequency: const Duration(minutes: 15),
                       );
 
-                      selectedIsland.id == -1
-                          ? Navigator.popAndPushNamed(context, 'home')
-                          : Navigator.pop(context);
+                      context.goNamed(AppRoute.home.name);
                     },
                     title: Padding(
                       padding: const EdgeInsets.only(left: 24.0),

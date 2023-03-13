@@ -28,7 +28,7 @@ class HomeScreen extends ConsumerWidget {
         actions: [
           IconButton(
             onPressed: () {
-              context.pushNamed(AppRoute.selectIsland.name);
+              context.goNamed(AppRoute.selectIsland.name);
             },
             icon: const Icon(Ionicons.location),
           ),

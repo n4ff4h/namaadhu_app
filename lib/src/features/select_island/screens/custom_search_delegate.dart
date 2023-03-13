@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:namaadhu_app/src/constants/app_colors.dart';
 import 'package:namaadhu_app/src/features/select_island/models/atoll.dart';
 import 'package:namaadhu_app/src/features/select_island/models/island.dart';
 import 'package:namaadhu_app/src/features/select_island/providers/selected_island_provider.dart';
+import 'package:namaadhu_app/src/router/app_router.dart';
 
 const kSearchFieldTextStyle = TextStyle(
   fontFamily: 'Poppins',
@@ -103,8 +105,7 @@ class CustomSearchDelegate extends SearchDelegate {
                   islandName: island.islandName,
                 );
 
-                Navigator.pushNamedAndRemoveUntil(
-                    context, 'home', (route) => false);
+                context.goNamed(AppRoute.home.name);
               },
               title: Text(
                 '${island.atollAbbreviation}. ${island.islandName}',
