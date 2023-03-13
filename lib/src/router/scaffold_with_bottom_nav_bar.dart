@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:namaadhu_app/src/constants/app_colors.dart';
 
 import 'app_router.dart';
 
@@ -36,24 +38,33 @@ class _ScaffoldWithBottomNavBarState extends State<ScaffoldWithBottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: widget.child,
-      bottomNavigationBar: BottomNavigationBar(
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _selectedIndex,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Ionicons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Ionicons.settings),
-            label: 'Settings',
-          ),
-        ],
-        onTap: (index) => _tap(context, index),
+    // System nav bar color
+    final systemTheme = SystemUiOverlayStyle.light
+        .copyWith(systemNavigationBarColor: kBottomNavBarColor);
+
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: systemTheme,
+      child: Scaffold(
+        body: widget.child,
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: kBottomNavBarColor,
+          selectedItemColor: kPrimaryColor,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          type: BottomNavigationBarType.fixed,
+          currentIndex: _selectedIndex,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Ionicons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Ionicons.settings),
+              label: 'Settings',
+            ),
+          ],
+          onTap: (index) => _tap(context, index),
+        ),
       ),
     );
   }
