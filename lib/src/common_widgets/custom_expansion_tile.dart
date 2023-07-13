@@ -416,7 +416,7 @@ class _CustomExpansionTileState extends State<CustomExpansionTile>
     _headerColorTween
       ..begin = widget.collapsedTextColor ??
           customExpansionTileTheme.collapsedTextColor ??
-          theme.textTheme.subtitle1!.color
+          theme.textTheme.titleMedium!.color
       ..end = widget.textColor ??
           customExpansionTileTheme.textColor ??
           colorScheme.primary;
