@@ -66,7 +66,7 @@ class _SelectIslandScreenState extends ConsumerState<SelectIslandScreen> {
                   flutterLocalNotificationsPlugin
                       .resolvePlatformSpecificImplementation<
                           AndroidFlutterLocalNotificationsPlugin>()
-                      ?.requestPermission()
+                      ?.requestNotificationsPermission()
                       .then((_) => Navigator.pop(context));
                 },
                 child: const Text(

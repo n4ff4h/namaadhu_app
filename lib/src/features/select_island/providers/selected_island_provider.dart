@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/legacy.dart';
 import 'package:namaadhu_app/src/features/select_island/models/selected_island_state.dart';
 import 'package:namaadhu_app/src/global_providers.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,7 +12,7 @@ final selectedIslandProvider =
 );
 
 class SelectedIslandNotifier extends StateNotifier<SelectedIslandState> {
-  final StateNotifierProviderRef ref;
+  final Ref ref;
   final SharedPreferences pref;
 
   SelectedIslandNotifier(this.ref, this.pref)

@@ -23,7 +23,7 @@ class NotificationService {
       iOS: initializationSettingsIOS,
     );
 
-    await _localNotifications.initialize(initializationSettings);
+    await _localNotifications.initialize(settings: initializationSettings);
   }
 
   Future<NotificationDetails> _notificationDetails() async {
@@ -56,14 +56,12 @@ class NotificationService {
     final platformChannelSpecifics = await _notificationDetails();
 
     await _localNotifications.zonedSchedule(
-      id,
-      title,
-      body,
-      tz.TZDateTime.from(scheduleTime, tz.local),
-      platformChannelSpecifics,
-      uiLocalNotificationDateInterpretation:
-          UILocalNotificationDateInterpretation.absoluteTime,
-      androidAllowWhileIdle: true,
+      id: id,
+      title: title,
+      body: body,
+      scheduledDate: tz.TZDateTime.from(scheduleTime, tz.local),
+      notificationDetails: platformChannelSpecifics,
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
     );
   }
 
